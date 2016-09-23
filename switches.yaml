@@ -1,0 +1,8 @@
+- platform: orvibo
+  host: 192.168.31.192
+
+- platform: orvibo
+  host: 192.168.31.178
+
+- platform: orvibo
+  host: 192.168.31.180

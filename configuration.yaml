@@ -1,0 +1,114 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Annfield
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/Dublin
+
+  latitude: !secret latitude
+  longitude: !secret longitude
+  elevation: 61
+
+  customize: !include customize.yaml
+
+http:
+  api_password: !secret http_password
+
+ifttt:
+  key: !secret ifttt
+
+# Enables the frontend
+frontend:
+
+# Track the sun
+sun:
+
+wemo:
+
+# View all events in a logbook
+logbook:
+
+# Discover some devices automatically
+discovery:
+
+# Enables support for tracking state changes over time.
+history:
+
+# Allows you to issue voice commands from the frontend
+conversation:
+
+# Checks for available updates
+updater:
+
+#################################################################
+## Components
+#################################################################
+
+zwave:
+  usb_path: /dev/ttyACM0
+  config_path: /usr/local/lib/python3.4/dist-packages/libopenzwave-0.3.0b8-py3.4-linux-armv7l.egg/config/
+  polling_interval: 10000
+
+nest:
+  username: !secret nest_user
+  password: !secret nest
+
+climate:
+  platform: nest
+
+notify:
+  - platform: pushbullet
+    api_key: !secret pushbullet
+    name: Annfield
+  - platform: telegram
+    name: Marvin_Telegram
+    api_key: !secret telegram
+    chat_id: !secret telegram_chat
+
+weblink:
+  entities:
+    - name: Calendar
+      url: CALSHOW://
+      icon: mdi:calendar
+    - name: Router
+      url: !secret router_ip
+      icon: mdi:router-wireless
+    - name: Pi-Hole
+      url: !secret pi_hole
+      icon: mdi:alert-octagon
+    - name: Spotify
+      url: spotify://open.spotify.com
+      icon: mdi:spotify
+
+recorder:
+  purge_days: 14
+
+device_tracker: !include device_tracker.yaml
+
+sensor: !include sensors.yaml
+
+switch: !include switches.yaml
+
+#################################################################
+## Groups
+#################################################################
+
+group: !include groups.yaml
+
+#################################################################
+## Scenes
+#################################################################
+
+scenes:
+
+#################################################################
+## Automations
+#################################################################
+
+automation: !include automations.yaml
+
+#################################################################
+## Scripts
+#################################################################
+
+script: !include scripts.yaml

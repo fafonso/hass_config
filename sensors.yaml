@@ -1,0 +1,55 @@
+- platform: time_date
+  display_options:
+    - 'time'
+    - 'date'
+
+- platform: speedtest
+  minute:
+    - 0
+    - 30
+  monitored_conditions:
+    - ping
+    - download
+    - upload
+
+- platform: forecast
+  api_key: !secret forecast_api
+  monitored_conditions:
+    - summary
+    - temperature
+    - apparent_temperature
+    - hourly_summary
+    - daily_summary
+    - icon
+
+- platform: systemmonitor
+  resources:
+    - type: disk_use_percent
+      arg: /home
+    - type: memory_free
+    - type: processor_use
+    - type: since_last_boot
+
+- platform: nest
+  monitored_conditions:
+    - 'co_status'
+    - 'smoke_status'
+    - 'battery_level'
+- platform: pi_hole
+  host: 192.168.31.234
+
+- platform: yr
+  monitored_conditions:
+    - temperature
+    - symbol
+    - precipitation
+    - windSpeed
+    - pressure
+    - windDirection
+    - humidity
+    - fog
+    - cloudiness
+    - lowClouds
+    - mediumClouds
+    - highClouds
+    - dewpointTemperature

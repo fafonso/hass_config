@@ -1,0 +1,144 @@
+- alias: 'Night Light Downstairs'
+  trigger:
+    - condition: numeric_state
+      entity_id: sensor.fibaro_system_unknown_type0801_id1001_burglar_3
+      above: 7
+      below: 9
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: 'below_horizon'
+    - condition: state
+      entity_id: light.hall
+      state: 'off'
+    - condition: state
+      entity_id: switch.fibaro_system_fgs222_double_relay_switch_2x15kw_switch_4_2
+      state: 'off'
+    - condition: state
+      entity_id: switch.fibaro_system_fgs222_double_relay_switch_2x15kw_switch_4
+      state: 'off'
+  action:
+    service: script.turn_on
+    entity_id: script.motion_activated_downstairs
+
+
+- alias: 'Motion Alarm'
+  trigger:
+    - condition: numeric_state
+      entity_id: sensor.fibaro_system_unknown_type0801_id1001_burglar_3
+      above: 7
+      below: 9
+  condition:
+    - condition: state
+      entity_id: device_tracker.ross
+      state: 'not_home'
+    - condition: state
+      entity_id: device_tracker.sinead
+      state: 'not_home'
+  action:
+      service: notify.Marvin_Telegram
+      data:
+        message: 'Motion Alarm'
+
+- alias: 'Twins Bedtime'
+  trigger:
+    - platform: time
+      after: '20:00:00'
+  action:
+    service: light.turn_off
+    entity_id: light.kids
+
+- alias: 'Twins Bedtime 1'
+  trigger:
+    - platform: time
+      after: '19:20:00'
+  condition:
+    - platform: time
+      before: '19:30:00'
+  action:
+    service: light.turn_on
+    entity_id:
+      - light.kids
+      - light.landing
+    data:
+      brightness: 130
+
+- alias: 'Evening Lights'
+  trigger:
+    - condition: sun
+      event: sunset
+      offset: '-00:30:00'
+  condition:
+    - platform: time
+      after: '16:00:00'
+      before: '22:30:00'
+  action:
+    service: script.turn_on
+    entity_id: script.evening
+
+- alias: 'Wake Up Ross'
+  trigger:
+    platform: time
+    after: '07:00:00'
+  condition:
+    platform: time
+    before: '08:00:00'
+    weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+  action:
+    service: switch.turn_on
+    entity_id: switch.orvibo_s20_switch_3
+
+- alias: 'Wake Up Sinead Class'
+  trigger:
+    platform: time
+    after: '07:00:00'
+  condition:
+    platform: time
+    before: '08:00:00'
+    weekday:
+      - tue
+  action:
+    service: switch.turn_on
+    entity_id: switch.orvibo_s20_switch
+
+- alias: 'Wake Up Sinead'
+  trigger:
+    platform: time
+    after: '07:30:00'
+  condition:
+    platform: time
+    before: '08:00:00'
+    weekday:
+      - mon
+      - wed
+      - thu
+      - fri
+  action:
+    service: switch.turn_on
+    entity_id: switch.orvibo_s20_switch
+
+
+- alias: 'Protect Alarm'
+  trigger:
+    condition: state
+    entity_id: sensor.hallway_co_status, sensor.hallway_smoke_status, sensor.upstairs_co_status, sensor.upstairs_smoke_status, sensor.kids_room_co_status, sensor.kids_room_smoke_status
+    to: "Emergency"
+  action:
+    service: script.turn_on
+    entity_id: script.alarm_lights
+
+- alias: 'Morning Lights off'
+  trigger:
+    platform: time
+    after: '09:30:00'
+  condition:
+    - platform: time
+      before: '10:00:00'
+  action:
+    service: script.turn_on
+    entity_id: script.bedtime

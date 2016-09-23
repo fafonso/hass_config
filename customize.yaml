@@ -1,0 +1,98 @@
+group.family:
+  icon: mdi:home
+
+media_player.soundbar:
+  icon: mdi:speaker
+  friendly_name: Soundbar
+
+media_player.bedroom:
+  icon: mdi:speaker
+  friendly_name: Bedroom
+
+media_player.soundbar_2:
+  icon: mdi:speaker
+  friendly_name: Soundbar and Kitchen
+
+media_player.kitchen:
+  icon: mdi:speaker
+  friendly_name: Kitchen
+
+media_player.living_room:
+  icon: mdi:television
+  friendly_name: TV
+
+sensor.weather_summary:
+  icon: mdi:weather-partlycloudy
+  friendly_name: Weather
+
+sensor.weather_temperature:
+  icon: mdi:thermometer-lines
+  friendly_name: Outside Temperature
+
+sensor.fibaro_system_unknown_type0801_id1001_temperature_3:
+  icon: mdi:thermometer-lines
+  friendly_name: Hall Temperature
+
+switch.orvibo_s20_switch_2:
+  friendly_name: Living Room Light
+  icon: mdi:lightbulb
+
+switch.orvibo_s20_switch:
+  friendly_name: Sinead Bedside
+  icon: mdi:lightbulb
+
+switch.orvibo_s20_switch_3:
+    friendly_name: Ross Bedside
+    icon: mdi:lightbulb
+
+script.bedtime:
+  icon: mdi:hotel
+  friendly_name: Bedtime
+
+switch.fibaro_system_fgs222_double_relay_switch_2x15kw_switch_4:
+  friendly_name: Kitchen Light 1
+  icon: mdi:lightbulb
+
+switch.fibaro_system_fgs222_double_relay_switch_2x15kw_switch_4_2:
+  friendly_name: Kitchen Light 2
+  icon: mdi:lightbulb
+
+sensor.fibaro_system_unknown_type0801_id1001_luminance_3:
+  friendly_name: Hall Brightness
+  icon: mdi:brightness-5
+
+sensor.hallway_co_status:
+  friendly_name: Hall CO2
+  icon: mdi:alert-circle
+
+sensor.hallway_smoke_status:
+  friendly_name: Hall Smoke
+  icon: mdi:alert-circle
+
+sensor.hallway_battery_level:
+  friendly_name: Hall Alarm Battery
+  icon: mdi:battery
+
+sensor.upstairs_co_status:
+  friendly_name: Hall CO2
+  icon: mdi:alert-circle
+
+sensor.upstairs_smoke_status:
+  friendly_name: Hall Smoke
+  icon: mdi:alert-circle
+
+sensor.upstairs_battery_level:
+  friendly_name: Hall Alarm Battery
+  icon: mdi:battery
+
+sensor.kids_room_co_status:
+  friendly_name: Hall CO2
+  icon: mdi:alert-circle
+
+sensor.kids_room_smoke_status:
+  friendly_name: Hall Smoke
+  icon: mdi:alert-circle
+
+sensor.kids_room_battery_level:
+  friendly_name: Hall Alarm Battery
+  icon: mdi:battery

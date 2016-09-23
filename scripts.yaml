@@ -1,0 +1,105 @@
+bedtime:
+  alias: Bedtime
+  sequence:
+    - alias: Turn all lights Off
+      service: light.turn_off
+      data:
+        entity_id: group.all_lights
+    - alias: Turn bedside lights Off
+      service: switch.turn_off
+      data:
+        entity_id: group.bedroom_lights
+    - alias: Turn kitchen lights Off
+      service: switch.turn_off
+      data:
+        entity_id: group.kitchen_lights
+    - alias: Turn living room light off
+      service: switch.turn_off
+      data:
+        entity_id: switch.orvibo_s20_switch_2
+    - alias: Notify
+      service: notify.Marvin_Telegram
+      data:
+        message: 'All Lights Off'
+
+evening:
+  alias: Evening
+  sequence:
+    - alias: Turn sinead bedside light On
+      service: switch.turn_on
+      data:
+        entity_id: switch.orvibo_s20_switch
+    - alias: Turn ross bedside light On
+      service: switch.turn_on
+      data:
+        entity_id: switch.orvibo_s20_switch_3
+    - alias: Turn living room light on
+      service: switch.turn_on
+      data:
+        entity_id: switch.orvibo_s20_switch_2
+    - alias: Turn kitchen light On
+      service: switch.turn_on
+      data:
+        entity_id: switch.fibaro_system_fgs222_double_relay_switch_2x15kw_switch_4
+    - alias: Turn on lights
+      service: light.turn_on
+      data:
+       entity_id: group.evening_lights
+    - alias: Notify
+      service: notify.Marvin_Telegram
+      data:
+        message: 'Evening Lights On'
+
+motion_activated_downstairs:
+  alias: Motion Activated Downstairs
+  sequence:
+    - alias: Hall light on
+      service: light.turn_on
+      data:
+        entity_id: light.hall
+    - alias: Kitchen light on
+      service: switch.turn_on
+      data:
+        entity_id: switch.fibaro_system_fgs222_double_relay_switch_2x15kw_switch_4_2
+    - alias: Notify
+      service: notify.Marvin_Telegram
+      data:
+        message: 'Motion Activated Lights On'
+    - delay:
+        minutes: 10
+    - alias: Hall lights off
+      service: light.turn_off
+      data:
+        entity_id: light.hall
+    - alias: Kitchen light off
+      service: switch.turn_off
+      data:
+        entity_id: switch.fibaro_system_fgs222_double_relay_switch_2x15kw_switch_4_2
+    - alias: Notify
+      service: notify.Marvin_Telegram
+      data:
+        message: 'Motion Activated Lights Off'
+
+alarm_lights:
+  alias: Alarm Lights On
+  sequence:
+    - alias: Turn all lights on
+      service: light.turn_on
+      data:
+        entity_id: group.all_lights
+    - alias: Turn bedside lights On
+      service: switch.turn_on
+      data:
+        entity_id: group.bedroom_lights
+    - alias: Turn kitchen lights On
+      service: switch.turn_on
+      data:
+        entity_id: group.kitchen_lights
+    - alias: Turn living room light on
+      service: switch.turn_on
+      data:
+        entity_id: switch.orvibo_s20_switch_2
+    - alias: Notify
+      service: notify.Marvin_Telegram
+      data:
+        message: 'Alarm Lights On'

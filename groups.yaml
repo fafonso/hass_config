@@ -1,0 +1,214 @@
+default_view:
+  view: yes
+  entities:
+    - group.family
+    - group.time
+    - group.weather
+    - group.links
+    - group.internet
+    - script.bedtime
+
+downstairs:
+  name: Downstairs
+  view: yes
+  entities:
+    #- group.chromecast_living_room
+    #- group.chromecast_kitchen
+    - group.kitchen
+    - group.living_room
+    - group.hall
+    #- thermostat.downstairs
+    #- camera.living_room
+    #- group.protects_downstairs
+    #- sensor.fibaro_system_unknown_type0801_id1001_temperature_3
+
+
+upstairs:
+  name: Upstairs
+  view: yes
+  entities:
+    #- group.upstairs_lights
+    #- group.bedroom_lights
+    #- group.protects_upstairs
+    - group.landing
+    - group.bedroom
+    - group.kids_room
+
+system:
+  name: System
+  view: yes
+  entities:
+    - group.rasp_pi
+    - group.fibaro
+
+time:
+  name: Time
+  icon: mdi:clock
+  entities:
+    - sensor.time
+    - sensor.date
+
+links:
+  name: Links
+  entities:
+    - weblink.calendar
+    - weblink.spotify
+    - weblink.router
+    - weblink.pihole
+
+weather:
+  name: Weather
+  icon: mdi:weather-sunny
+  entities:
+    - sun.sun
+    - sensor.forecastio_temperature
+    #- sensor.forecastio_apparent_temperature
+    #- sensor.forecastio_summary
+    - sensor.forecastio_hourly_summary
+    #- sensor.forecastio_icon
+
+internet:
+  name: Internet
+  icon: mdi:lan-connect
+  entities:
+    - sensor.speedtest_ping
+    - sensor.speedtest_download
+    - sensor.speedtest_upload
+
+family:
+  name: Home
+  icon: mdi:home
+  entities:
+    - device_tracker.sinead
+    - device_tracker.ross
+
+rasp_pi:
+  name: Pi
+  icon: mdi:raspberrypi
+  entities:
+    - sensor.cpu_use
+    - sensor.disk_use_home
+    - sensor.ram_free
+    - sensor.since_last_boot
+
+
+living_room:
+  name: Living Room
+  entities:
+    - switch.orvibo_s20_switch_2
+    - climate.downstairs
+
+kitchen:
+  name: Kitchen
+  entities:
+    - switch.fibaro_system_fgs222_double_relay_switch_2x15kw_switch_4
+    - switch.fibaro_system_fgs222_double_relay_switch_2x15kw_switch_4_2
+
+hall:
+  name: Hall
+  entities:
+    - light.hall
+    - sensor.fibaro_system_unknown_type0801_id1001_temperature_3
+    - sensor.fibaro_system_unknown_type0801_id1001_luminance_3
+    - sensor.hallway_co_status
+    - sensor.hallway_smoke_status
+    - sensor.hallway_battery_level
+
+bedroom:
+  name: Bedroom
+  entities:
+    - switch.orvibo_s20_switch
+    - switch.orvibo_s20_switch_3
+
+kids_room:
+  name: Kids Room
+  entities:
+    - light.kids
+    - sensor.kids_room_co_status
+    - sensor.kids_room_smoke_status
+    - sensor.kids_room_battery_level
+
+landing:
+  name: Landing
+  entities:
+    - light.landing
+    - sensor.upstairs_co_status
+    - sensor.upstairs_smoke_status
+    - sensor.upstairs_battery_level
+
+chromecast_living_room:
+  name: Chromecast Living Room
+  icon: mdi:cast
+  entities:
+   - media_player.soundbar
+   - media_player.soundbar_2
+   - media_player.living_room
+
+chromecast_kitchen:
+  name: Chromecast Kitchen
+  icon: mdi:cast
+  entities:
+   - media_player.kitchen
+
+downstairs_lights:
+  name: Downstairs Lights
+  icon: mdi:lightbulb
+  entities:
+
+    - switch.fibaro_system_fgs222_double_relay_switch_2x15kw_switch_4
+    - switch.fibaro_system_fgs222_double_relay_switch_2x15kw_switch_4_2
+
+
+kitchen_lights:
+  name: Kitchen Lights
+  icon: mdi:lightbulb
+  entities:
+    - switch.fibaro_system_fgs222_double_relay_switch_2x15kw_switch_4
+    - switch.fibaro_system_fgs222_double_relay_switch_2x15kw_switch_4_2
+
+upstairs_lights:
+  name: Upstairs Lights
+  icon: mdi:lightbulb
+  entities:
+    - light.kids
+    - light.landing
+
+bedroom_lights:
+ name: Bedroom Lights
+ entities:
+   - switch.orvibo_s20_switch
+   - switch.orvibo_s20_switch_3
+
+evening_lights:
+  name: Evening Lights
+  entities:
+    - light.hall
+    - light.landing
+
+protects_upstairs:
+  name: Upstairs Protects
+  entities:
+    - sensor.upstairs_co_status
+    - sensor.upstairs_smoke_status
+    - sensor.upstairs_battery_level
+    - sensor.kids_room_co_status
+    - sensor.kids_room_smoke_status
+    - sensor.kids_room_battery_level
+
+protects_downstairs:
+  name: Downstairs Protects
+  entities:
+    - sensor.hallway_co_status
+    - sensor.hallway_smoke_status
+    - sensor.hallway_battery_level
+
+fibaro:
+  name: Fibaro
+  entities:
+    - sensor.fibaro_system_unknown_type0801_id1001_alarm_level_3
+    - sensor.fibaro_system_unknown_type0801_id1001_alarm_type_3
+    - sensor.fibaro_system_unknown_type0801_id1001_burglar_3
+    - sensor.fibaro_system_unknown_type0801_id1001_luminance_3
+    - sensor.fibaro_system_unknown_type0801_id1001_seismic_intensity_3
+    - sensor.fibaro_system_unknown_type0801_id1001_sourcenodeid_3
+    - binary_sensor.fibaro_system_unknown_type0801_id1001_sensor_3
