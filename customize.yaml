@@ -40,10 +40,12 @@ switch.orvibo_s20_switch_2:
 switch.orvibo_s20_switch:
   friendly_name: Sinead Bedside
   icon: mdi:lightbulb
+  emulated_hue_name: Sinead Bedside
 
 switch.orvibo_s20_switch_3:
     friendly_name: Ross Bedside
     icon: mdi:lightbulb
+    emulated_hue_name: Ross Bedside
 
 script.bedtime:
   icon: mdi:hotel
@@ -52,10 +54,12 @@ script.bedtime:
 switch.fibaro_system_fgs222_double_relay_switch_2x15kw_switch_4:
   friendly_name: Kitchen Light 1
   icon: mdi:lightbulb
+  emulated_hue_name: Kitchen One
 
 switch.fibaro_system_fgs222_double_relay_switch_2x15kw_switch_4_2:
   friendly_name: Kitchen Light 2
   icon: mdi:lightbulb
+  emulated_hue_name: Kitchen Two
 
 sensor.fibaro_system_unknown_type0801_id1001_luminance_3:
   friendly_name: Hall Brightness

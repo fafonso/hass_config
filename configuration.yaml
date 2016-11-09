@@ -83,6 +83,9 @@ weblink:
 recorder:
   purge_days: 14
 
+emulated_hue:
+  expose_by_default: true
+
 device_tracker: !include device_tracker.yaml
 
 sensor: !include sensors.yaml
@@ -112,3 +115,54 @@ automation: !include automations.yaml
 #################################################################
 
 script: !include scripts.yaml
+
+alexa:
+  intents:
+    WhereAreWeIntent:
+      speech:
+        type: plaintext
+        text: >
+          {%- if is_state('device_tracker.ross', 'home') and
+                 is_state('device_tracker.sinead', 'home') -%}
+            You are both home, you silly
+          {%- else -%}
+            Ross is at {{ states("device_tracker.ross") }}
+            and Sinead is at {{ states("device_tracker.sinead") }}
+          {% endif %}
+
+    LocateIntent:
+      action:
+        service: notify.notify
+        data_template:
+          message: The location of {{ User }} has been queried via Alexa.
+      speech:
+        type: plaintext
+        text: >
+          {%- for state in states.device_tracker -%}
+            {%- if state.name.lower() == User.lower() -%}
+              {{ state.name }} is at {{ state.state }}
+            {%- endif -%}
+          {%- else -%}
+            I am sorry, I do not know where {{ User }} is.
+          {%- endfor -%}
+      card:
+        type: simple
+        title: Sample title
+        content: Some more content
+
+    ControlLightsIntent:
+      action:
+        service: light.turn_off
+        entity_id: group.all_lights
+      speech:
+        type: plaintext
+        text: !include alexa_confirm.yaml
+
+    RunScriptIntent:
+      action:
+        service: script.turn_on
+        data_template:
+          entity_id: script.{{ Script | replace(" ", "_") }}
+      speech:
+        type: plaintext
+        text: !include alexa_confirm.yaml
