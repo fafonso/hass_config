@@ -22,3 +22,6 @@ Fibraro Z-Wave Motion Sensor
 
 Nest Protects x 3
 
+Amazon Echo
+ - can ask to run bedtime script
+ - can manage Nest
